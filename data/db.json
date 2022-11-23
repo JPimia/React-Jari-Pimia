@@ -1,0 +1,43 @@
+{
+    "tasks": [
+        {
+            "id": 1,
+            "name": "koodaa",
+            "context": [1]
+        },
+        {
+            "id": 2,
+            "name": "imuroi",
+            "context": [2]
+        },
+        {
+            "id": 3,
+            "name": "ruoki kissa",
+            "context": [2, 3]
+        },
+        {
+            "id": 4,
+            "name": "ruoki koira",
+            "context": [2, 3]
+        },
+        {
+            "name": "mee paskalle",
+            "context": [2],
+            "id": 5
+        }
+    ],
+    "contexts": [
+        {
+            "id": 1,
+            "name": "fronttikurssi"
+        },
+        {
+            "id": 2,
+            "name": "kotityöt"
+        },
+        {
+            "id": 3,
+            "name": "eläintenhoito"
+        }
+    ]
+}
