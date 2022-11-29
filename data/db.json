@@ -1,60 +1,42 @@
 {
-  "tasks": [
-    {
-      "id": 2,
-      "checked": false,
-      "task": "imuroi",
-      "context": [
-        2
-      ]
-    },
-    {
-      "id": 3,
-      "checked": false,
-      "task": "ruoki kissa",
-      "context": [
-        2,
-        3
-      ]
-    },
-    {
-      "id": 4,
-      "checked": false,
-      "task": "ruoki koira",
-      "context": [
-        2,
-        3
-      ]
-    },
-    {
-      "checked": false,
-      "task": "mee paskalle",
-      "context": [
-        2
-      ],
-      "id": 5
-    },
-    {
-      "id": 6,
-      "checked": false,
-      "task": "3333334asd3",
-      "context": [
-        1
-      ]
-    }
-  ],
-  "contexts": [
-    {
-      "id": 1,
-      "name": "fronttikurssi"
-    },
-    {
-      "id": 2,
-      "name": "kotityöt"
-    },
-    {
-      "id": 3,
-      "name": "eläintenhoito"
-    }
-  ]
+    "tasks": [
+        {
+            "id": 2,
+            "checked": false,
+            "task": "imuroi",
+            "context": [2]
+        },
+        {
+            "id": 3,
+            "checked": false,
+            "task": "ruoki kissa",
+            "context": [2, 3]
+        },
+        {
+            "id": 4,
+            "checked": false,
+            "task": "ruoki koira",
+            "context": [2, 3]
+        },
+        {
+            "checked": false,
+            "task": "mee paskalle",
+            "context": [2],
+            "id": 5
+        }
+    ],
+    "contexts": [
+        {
+            "id": 1,
+            "name": "fronttikurssi"
+        },
+        {
+            "id": 2,
+            "name": "kotityöt"
+        },
+        {
+            "id": 3,
+            "name": "eläintenhoito"
+        }
+    ]
 }

@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import Square from "../components/Square";
 import Footer from "../components/Footer";
 import AddTask from "../components/AddTask";
-import SelectContext from "../components/SelectContext";
+
 import apiRequest from "../components/ApiRequest";
 
-const MainPage = (tasks, contexts, setTasks, setContexts) => {
+const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
     const API_URL = "http://localhost:3010/tasks";
 
     const [fetchError, setFetchError] = useState(null);
@@ -65,7 +65,7 @@ const MainPage = (tasks, contexts, setTasks, setContexts) => {
 
     const addTask = async (task) => {
         const id = tasks.length ? tasks[tasks.length - 1].id + 1 : 1;
-        const myNewTask = { id, checked: false, task };
+        const myNewTask = { id, checked: false, task, context: [] };
         const listTasks = [...tasks, myNewTask];
         setAndSaveTasks(listTasks);
 

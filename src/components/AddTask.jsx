@@ -1,4 +1,3 @@
-import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 import { useRef, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 import SelectContext from "./SelectContext";
@@ -50,10 +49,10 @@ const AddTask = ({
                 type="text"
                 placeholder="Lisää Tehtävä"
                 required
-                value={newTask}
-                onChange={(e) => setTask({ task: e.target.value })}
+                defaultValue={newTask}
+                onChange={(e) => setNewTask(e.target.value)}
             />
-            {createContextButtons()}
+            {/* {createContextButtons()} */}
             <button
                 type="submit"
                 aria-label="Add Task"

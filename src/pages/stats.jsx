@@ -17,15 +17,6 @@ const Stats = ({
         backgroundColor: "mediumblue",
         color: "#eee",
     };
-    const Stats = (props) => {
-        return (
-            <div>
-                {props.tasks.map((t) => (
-                    <Task id={t.id} />
-                ))}
-            </div>
-        );
-    };
 
     return (
         <div>

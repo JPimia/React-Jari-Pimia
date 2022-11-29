@@ -15,9 +15,9 @@ const Square = ({
     console.log(tasks.tasks);
     return (
         <section className="square">
-            {tasks.tasks.length ? (
+            {tasks.length ? (
                 <TaskList
-                    tasks={tasks.tasks}
+                    tasks={tasks}
                     handleDelete={handleDelete}
                     handleCheck={handleCheck}
                     updateTask={updateTask}
