@@ -1,13 +1,235 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+html {
+    font-size: 22px;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.square {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 400px;
+    height: calc(60vh - 2px);
+    border: 2px solid black;
+    box-shadow: 2px 2px 5px #000;
+    border-radius: 0rem;
+}
+
+.taskSquare {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 800px;
+    height: calc(60vh - 2px);
+    border: 2px solid black;
+    box-shadow: 2px 2px 5px #000;
+    border-radius: 0rem;
+}
+
+.square p {
+    text-align: center;
+}
+
+.header {
+    width: calc(100%);
+    margin-top: 5px;
+    padding: 0 0.25em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer {
+    width: calc(80% - 22px);
+    padding: 0.25em;
+    background-color: mediumblue;
+    color: aliceblue;
+    display: grid;
+    place-content: center;
+    border: 2px solid black;
+    box-shadow: 2px 2px 5px #000;
+}
+
+.footer2 {
+    width: calc(100%);
+    padding: 0.25em;
+    background-color: mediumblue;
+    color: aliceblue;
+    display: grid;
+    place-content: center;
+    border: 2px solid black;
+    box-shadow: 2px 2px 5px #000;
+}
+
+form {
+    width: 400px;
+}
+
+input[type="text"] {
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+    width: 100%;
+    font-size: 1rem;
+    box-shadow: 2px 2px 5px #000;
+    border-radius: 0.25rem;
+    outline: none;
+}
+
+.square ul {
+    width: 100%;
+    list-style: none;
+    padding: 0 0.25rem 0.25rem;
+}
+
+.square ul li::before {
+    content: "\200B";
+}
+
+.item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    margin: 0.25rem 0;
+    background-color: rgb(207, 207, 207);
+}
+
+.item:first-child {
+    margin: 0;
+}
+
+.item input[type="checkbox"] {
+    text-align: center;
+    width: 2.5rem;
+    width: 48px;
+    min-width: 48px;
+    height: 2.5rem;
+    height: 48px;
+    min-height: 48px;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+.item input[type="checkbox"]:focus + label {
+    text-decoration: underline;
+}
+
+.item > label {
+    font-size: 0.75rem;
+    color: #000;
+    flex-grow: 1;
+}
+
+.item svg {
+    width: 48px;
+    min-width: 48px;
+    height: 36px;
+    font-size: 1rem;
+    color: steelblue;
+    cursor: pointer;
+}
+
+.item svg:focus,
+.item svg:hover {
+    color: red;
+    outline: none;
+}
+
+.addForm {
+    width: calc(80% - 21px);
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 0;
+    padding: 1 0.5rem 0.25rem;
+}
+
+.addForm label {
+    position: absolute;
+    left: -99999px;
+}
+
+.addForm input[type="text"] {
+    flex-grow: 1;
+    justify-content: flex-start;
+    width: 50%;
+    height: 47px;
+    font-size: 1rem;
+
+    border-radius: 0.25rem;
+
+    outline: none;
+}
+
+.context {
+    flex-grow: 0;
+    justify-content: flex-end;
+    margin-top: 11px;
+    width: 20%;
+    height: 47px;
+    font-size: 15px;
+    opacity: 1;
+    border-radius: 0.25rem;
+    outline: none;
+}
+
+button {
+    height: 48px;
+    min-width: 48px;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: aliceblue;
+    color: mediumblue;
+    cursor: pointer;
+    margin-top: 11px;
+}
+
+button:focus,
+button:hover {
+    color: white;
+    background-color: limegreen;
+    outline: none;
+}
+
+.searchForm {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0.25rem 0 0;
+    padding: 0 0.5rem 0.25rem;
+    border-bottom: 1px solid rgb(131, 15, 15);
+}
+
+.searchForm label {
+    position: absolute;
+    left: -99999px;
+}
+
+.searchForm input[type="text"] {
+    flex-grow: 1;
+    max-width: 100%;
+    min-height: 48px;
+    font-size: 1rem;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    outline: none;
 }

@@ -14,6 +14,8 @@ import Info from "./pages/info";
 export default function App() {
     const API_URL = "http://localhost:3010";
     const [tasks, setTasks] = useState([]);
+    const [contexts, setContexts] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const fetchTasks = async () => {
         try {
@@ -24,25 +26,58 @@ export default function App() {
             console.log(err.stack);
         }
     };
+    const fetchContexts = async () => {
+        try {
+            const response = await fetch(API_URL + "/contexts");
+            if (!response.ok) throw Error("Did not receive data");
+            const listContexts = await response.json();
+            setContexts(listContexts);
+            setIsLoading(false);
+        } catch (err) {
+        } finally {
+        }
+    };
 
     useEffect(() => {
         fetchTasks();
+        fetchContexts();
     }, []);
-
-    useEffect(() => {
-        console.log(tasks);
-    });
+    console.log(contexts);
     return (
         <>
             <Navbar />
             <div className="App-header">
-                <Routes>
-                    <Route path="/" element={<MainPage />} />
-                    <Route path="/info" element={<Info />} />
-                    <Route path="/stats" element={<Stats tasks={tasks} />} />
-                    <Route path="/random/*" element={<RandomPage />} />
-                    <Route path="*" element={<PageNotFound />} />
-                </Routes>
+                {isLoading ? (
+                    <p>Ladataan tehtäviä...</p>
+                ) : (
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={
+                                <MainPage
+                                    tasks={tasks}
+                                    contexts={contexts}
+                                    setContexts={setContexts}
+                                    setTasks={setTasks}
+                                />
+                            }
+                        />
+                        <Route path="/info" element={<Info />} />
+                        <Route
+                            path="/stats"
+                            element={
+                                <Stats
+                                    tasks={tasks}
+                                    contexts={contexts}
+                                    setContexts={setContexts}
+                                    setTasks={setTasks}
+                                />
+                            }
+                        />
+                        <Route path="/random/*" element={<RandomPage />} />
+                        <Route path="*" element={<PageNotFound />} />
+                    </Routes>
+                )}
             </div>
         </>
     );
