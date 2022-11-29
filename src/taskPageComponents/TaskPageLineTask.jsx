@@ -15,7 +15,7 @@ const TaskPageLineTask = ({ task, handleCheck, handleDelete, contexts }) => {
                             style={{
                                 display: "inline",
                                 listStyle: "none",
-                                paddingRight: "54px",
+                                paddingRight: "5px",
                             }}
                         >
                             <SelectContext task={task} context={context} />

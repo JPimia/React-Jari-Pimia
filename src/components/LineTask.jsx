@@ -49,7 +49,7 @@ const LineTask = ({
     } else {
         return (
             <form className="editForm" onSubmit={handleEdit}>
-                <label htmlFor="editTask">Muokkaa Nimeä</label>
+                <label htmlFor="editTask"></label>
                 <input
                     autoFocus
                     ref={inputRef}

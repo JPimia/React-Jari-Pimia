@@ -59,7 +59,7 @@ body {
 }
 
 footer {
-    width: calc(80% - 22px);
+    width: calc(100% - 0px);
     padding: 0.25em;
     background-color: mediumblue;
     color: aliceblue;
@@ -155,7 +155,15 @@ input[type="text"] {
 }
 
 .addForm {
-    width: calc(80% - 21px);
+    width: calc(100% - 0px);
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 0;
+    padding: 1 0.5rem 0.25rem;
+}
+
+.editForm {
+    width: calc(100% - 0px);
     display: flex;
     justify-content: flex-start;
     margin: 0 0 0;
@@ -198,7 +206,7 @@ button {
     padding: 0.5rem;
     font-size: 1rem;
     background-color: aliceblue;
-    color: mediumblue;
+    color: rgb(41, 9, 156);
     cursor: pointer;
     margin-top: 11px;
 }

@@ -8,7 +8,7 @@ const SelectContext = ({ task, context }) => {
     return (
         <button
             onClick={handleClick}
-            style={{ color: selected ? "green" : "red" }}
+            style={{ backgroundColor: selected ? "lightgreen" : "red" }}
         >
             {context.name}
         </button>
