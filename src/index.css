@@ -211,6 +211,18 @@ button {
     margin-top: 11px;
 }
 
+.button1 {
+    height: 40px;
+    min-width: 40px;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    font-size: 15px;
+    background-color: aliceblue;
+    color: rgb(41, 9, 156);
+    cursor: pointer;
+    margin-top: 11px;
+}
+
 button:focus,
 button:hover {
     color: white;

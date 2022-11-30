@@ -7,6 +7,7 @@ const SelectContext = ({ task, context }) => {
     const [selected, setSelected] = useState(task.context.includes(context.id));
     return (
         <button
+            class="button button1"
             onClick={handleClick}
             style={{ backgroundColor: selected ? "lightgreen" : "red" }}
         >

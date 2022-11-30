@@ -17,6 +17,7 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
     });
 
     const [newTask, setNewTask] = useState("");
+    const [newContext, setNewContext] = useState("");
     const [context, setContext] = useState(0);
     const [input, setInput] = useState("");
     const [edit, setEdit] = useState({
@@ -80,6 +81,23 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
         if (result) setFetchError(result);
     };
 
+    const addContext = async (context) => {
+        const id = contexts.length ? contexts[contexts.length - 1].id + 1 : 1;
+        const myNewContext = { id, context };
+        const listContexts = [...tasks, myNewContext];
+        setAndSaveTasks(listContexts);
+
+        const postOptions = {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(myNewContext),
+        };
+        const result = await apiRequest(API_URL, postOptions);
+        if (result) setFetchError(result);
+    };
+
     const handleCheck = async (id) => {
         const listTasks = tasks.map((task) =>
             task.id === id ? { ...task, checked: !task.checked } : task
@@ -119,10 +137,12 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!newTask) return;
+        if (!newTask && !newContext) return;
         // lisätään tehtävä ja tyhjätään form
         addTask(newTask, context);
+        addContext(newContext);
         setNewTask("");
+        setNewContext("");
     };
 
     const handleChange = (e) => {
@@ -151,6 +171,8 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
                     newTask={newTask}
                     context={context}
                     contexts={contexts}
+                    newContext={newContext}
+                    setNewContext={setNewContext}
                     setContext={setContext}
                     setNewTask={setNewTask}
                     handleSubmit={handleSubmit}
