@@ -19,7 +19,7 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
     const [newTask, setNewTask] = useState("");
     const [newContext, setNewContext] = useState("");
     const [context, setContext] = useState(0);
-    const [input, setInput] = useState("");
+
     const [edit, setEdit] = useState({
         id: null,
         value: "",
@@ -43,6 +43,16 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
         }
         const modifiedTasks = tasks.map((task) => {
             return task.id === taskId ? { ...task, task: newValue } : task;
+        });
+        console.log(modifiedTasks);
+        setTasks(modifiedTasks);
+    };
+    const updateTask2 = (task) => {
+        if (!task.task || /^\s*$/.test(task.task)) {
+            return;
+        }
+        const modifiedTasks = tasks.map((t) => {
+            return task.id === t.id ? task : t;
         });
         console.log(modifiedTasks);
         setTasks(modifiedTasks);
@@ -81,23 +91,6 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
         if (result) setFetchError(result);
     };
 
-    const addContext = async (context) => {
-        const id = contexts.length ? contexts[contexts.length - 1].id + 1 : 1;
-        const myNewContext = { id, context };
-        const listContexts = [...tasks, myNewContext];
-        setAndSaveTasks(listContexts);
-
-        const postOptions = {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(myNewContext),
-        };
-        const result = await apiRequest(API_URL, postOptions);
-        if (result) setFetchError(result);
-    };
-
     const handleCheck = async (id) => {
         const listTasks = tasks.map((task) =>
             task.id === id ? { ...task, checked: !task.checked } : task
@@ -126,27 +119,12 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
         if (result) setFetchError(result);
     };
 
-    const handleContext = (context) => {
-        const taskContext = tasks.map((task) =>
-            task.context === context
-                ? { ...task, checked: !task.checked }
-                : task
-        );
-        setContext(taskContext);
-    };
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!newTask && !newContext) return;
         // lisätään tehtävä ja tyhjätään form
         addTask(newTask, context);
-        addContext(newContext);
         setNewTask("");
-        setNewContext("");
-    };
-
-    const handleChange = (e) => {
-        setInput(e.target.value);
     };
 
     return (
@@ -161,7 +139,6 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
                     handleCheck={handleCheck}
                     handleDelete={handleDelete}
                     updateTask={updateTask}
-                    setInput={setInput}
                     patchTask={patchTask}
                 />
             )}
@@ -172,11 +149,11 @@ const MainPage = ({ tasks, contexts, setTasks, setContexts }) => {
                     context={context}
                     contexts={contexts}
                     newContext={newContext}
+                    updateTask2={updateTask2}
                     setNewContext={setNewContext}
                     setContext={setContext}
                     setNewTask={setNewTask}
                     handleSubmit={handleSubmit}
-                    handleContext={handleContext}
                 />
             )}
             {/* <SelectContext /> */}

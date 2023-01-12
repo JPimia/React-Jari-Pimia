@@ -1,6 +1,12 @@
 import TaskList from "./TaskPageTaskList";
 
-const TaskSquare = ({ tasks, handleCheck, handleDelete, contexts }) => {
+const TaskSquare = ({
+    tasks,
+    handleCheck,
+    handleDelete,
+    contexts,
+    updateTask2,
+}) => {
     const headerStyle = {
         backgroundColor: "mediumblue",
         color: "#eee",
@@ -12,6 +18,7 @@ const TaskSquare = ({ tasks, handleCheck, handleDelete, contexts }) => {
                 <TaskList
                     tasks={tasks}
                     contexts={contexts}
+                    updateTask2={updateTask2}
                     handleDelete={handleDelete}
                     handleCheck={handleCheck}
                     headerStyle={headerStyle}

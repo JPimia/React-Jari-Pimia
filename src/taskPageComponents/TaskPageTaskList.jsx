@@ -8,6 +8,7 @@ const TaskList = ({
     handleDelete,
     headerStyle,
     contexts,
+    updateTask2,
 }) => {
     return (
         <ul>
@@ -21,6 +22,7 @@ const TaskList = ({
                     contexts={contexts}
                     handleCheck={handleCheck}
                     handleDelete={handleDelete}
+                    updateTask2={updateTask2}
                 />
             ))}
         </ul>

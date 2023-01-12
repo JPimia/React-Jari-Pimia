@@ -1,10 +1,22 @@
-import { useEffect, useState } from "react";
-const SelectContext = ({ task, context }) => {
+const SelectContext = ({ task, context, updateTask }) => {
+    const selected = task.context.includes(context.id);
     const handleClick = () => {
-        setSelected(!selected);
+        if (!selected) {
+            task.context.push(context.id);
+            updateTask({
+                ...task,
+                context: task.context,
+            });
+        } else {
+            updateTask({
+                ...task,
+                context: task.context.filter((contextId) => {
+                    return context.id !== contextId;
+                }),
+            });
+        }
+        // setSelected(!selected);
     };
-
-    const [selected, setSelected] = useState(task.context.includes(context.id));
     return (
         <button
             class="button button1"

@@ -2,9 +2,14 @@ import React from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { FaCheckSquare } from "react-icons/fa";
 import SelectContext from "../components/SelectContext";
-import { useEffect } from "react";
 
-const TaskPageLineTask = ({ task, handleCheck, handleDelete, contexts }) => {
+const TaskPageLineTask = ({
+    task,
+    handleCheck,
+    handleDelete,
+    contexts,
+    updateTask2,
+}) => {
     const createContextButtons = () => {
         return (
             <ul>
@@ -18,7 +23,11 @@ const TaskPageLineTask = ({ task, handleCheck, handleDelete, contexts }) => {
                                 paddingRight: "5px",
                             }}
                         >
-                            <SelectContext task={task} context={context} />
+                            <SelectContext
+                                task={task}
+                                context={context}
+                                updateTask={updateTask2}
+                            />
                         </li>
                     );
                 })}

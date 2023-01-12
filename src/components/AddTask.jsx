@@ -1,46 +1,38 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { FaPlus } from "react-icons/fa";
-import SelectContext from "./SelectContext";
 
 const AddTask = ({
     newTask,
     setNewTask,
-    setContext,
     handleSubmit,
-    handleContext,
-    edit,
-    submitUpdate,
-    props,
-    contexts,
     newContext,
     setNewContext,
 }) => {
     const inputRef = useRef();
-    const [input, setInput] = useState("");
-    const [task, setTask] = useState({
-        task: "",
-        context: [],
-    });
-    const createContextButtons = () => {
-        return (
-            <ul>
-                {contexts.map((context) => {
-                    return (
-                        <li
-                            key={context.id}
-                            style={{
-                                display: "inline",
-                                listStyle: "none",
-                                paddingRight: "54px",
-                            }}
-                        >
-                            <SelectContext task={task} context={context} />
-                        </li>
-                    );
-                })}
-            </ul>
-        );
-    };
+    // const createContextButtons = () => {
+    //     return (
+    //         <ul>
+    //             {contexts.map((context) => {
+    //                 return (
+    //                     <li
+    //                         key={context.id}
+    //                         style={{
+    //                             display: "inline",
+    //                             listStyle: "none",
+    //                             paddingRight: "54px",
+    //                         }}
+    //                     >
+    //                         <SelectContext
+    //                             task={task}
+    //                             context={context}
+    //                             updateTask={setTask}
+    //                         />
+    //                     </li>
+    //                 );
+    //             })}
+    //         </ul>
+    //     );
+    // };
     return (
         <>
             <form className="addForm" onSubmit={handleSubmit}>
@@ -65,25 +57,25 @@ const AddTask = ({
                 </button>
             </form>
             <form className="addForm" onSubmit={handleSubmit}>
-                <label htmlFor="addContext">Lisää konteksti</label>
+                <label htmlFor="addContext">Luo konteksti</label>
                 <input
                     autoFocus
                     ref={inputRef}
                     id="addTask"
                     type="text"
-                    placeholder="Lisää Konteksti"
+                    placeholder="Luo uusi konteksti"
                     required
                     defaultValue={newContext}
                     onChange={(e) => setNewContext(e.target.value)}
                 />
                 {/* {createContextButtons()} */}
-                <button
+                {/* <button
                     type="submit"
                     aria-label="Add Context"
                     onClick={() => inputRef.current.focus()}
                 >
                     <FaPlus />
-                </button>
+                </button> */}
                 {console.log(newContext)}
             </form>
         </>
